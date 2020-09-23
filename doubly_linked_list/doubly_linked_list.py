@@ -128,7 +128,21 @@ class DoublyLinkedList:
     """
 
     def delete(self, node):
-        pass
+        if self.head is None:
+            return None
+        elif self.head is self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head:
+            self.head = node.next
+            node.delete()
+        elif node is self.tail:
+            self.tail = node.prev
+            node.delete()
+        else:
+            node.delete()
+
+        self.length -= 1
 
     """
     Finds and returns the maximum value of all the nodes 
